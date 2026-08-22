@@ -1,0 +1,27 @@
+{
+  "name": "obsidian-auto-collapse-sidebars",
+  "version": "1.0.0",
+  "description": "Automatically collapses both sidebars when entering a note with a specific tag and restores them when leaving.",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "BUILD_ENV=production node esbuild.config.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "sidebar",
+    "zen",
+    "focus"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.20.0",
+    "obsidian": "^1.5.7-1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  }
+}

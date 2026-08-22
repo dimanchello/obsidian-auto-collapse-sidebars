@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-auto-collapse-sidebars",
+  "name": "Auto Collapse Sidebars",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Automatically collapses sidebars when opening a note with a trigger tag (e.g. #zen) and restores them when navigating away.",
+  "author": "Dimanchello",
+  "authorUrl": "https://github.com/dimanchello/",
+  "isDesktopOnly": false
+}

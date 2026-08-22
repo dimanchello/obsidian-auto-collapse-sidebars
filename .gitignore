@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+
+# Compilation / Build outputs
+main.js
+*.map
+dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE and editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
