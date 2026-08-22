@@ -51,17 +51,20 @@ obsidian-auto-collapse-sidebars/
 
 ### Алгоритм работы
 1. **События**:
-   - `workspace.on('active-leaf-change')` — смена фокуса/открытие файла.
+   - `workspace.on('active-leaf-change')` — смена фокуса/открытие/закрытие файла.
    - `metadataCache.on('changed')` — добавление или удаление тега в текущей заметке.
-   - `workspace.onLayoutReady()` — первичная проверка при старте приложения.
+   - `metadataCache.on('resolve')` — готовность кэша метаданных при холодном старте.
+   - `vault.on('rename')` / `vault.on('delete')` — отслеживание перемещения/удаления активной zen-заметки.
+   - `workspace.onLayoutReady()` — первичная проверка при старте приложения с флагом начальной сессии.
 2. **Проверка тега (`hasTargetTag`)**:
-   - Очищает тег от `#` и приводит к нижнему регистру.
-   - Проверяет инлайн-теги в `cache.tags` и frontmatter в `cache.frontmatter` (`tags` или `tag`).
+   - Поддерживает один или несколько целевых тегов (через запятую/пробел).
+   - Использует `getAllTags` и fallback на `cache.tags` и `cache.frontmatter` (`tags`, `tag`).
    - Поддерживает вложенные теги (`tagClean === normalizedTarget || tagClean.startsWith(normalizedTarget + '/')`).
-3. **Управление панелями**:
+3. **Персистентность и управление панелями**:
    - Использование `app.workspace.leftSplit` и `app.workspace.rightSplit`.
    - Методы `.collapse()` и `.expand()`, свойство `.collapsed`.
-   - При переходе на нецелевую заметку или выгрузке плагина (`onunload`) вызывается `restoreSidebarsIfAutoCollapsed()`.
+   - Состояние `autoCollapsedLeft`/`autoCollapsedRight`/`activeFileWithTag` сохраняется в `data.json` (`savePluginData()`), благодаря чему после перезапуска Obsidian состояние автоскрытия сохраняется и панели корректно разворачиваются при закрытии стартовой вкладки.
+   - При переходе на нецелевую заметку, закрытии вкладки или выгрузке плагина (`onunload`) вызывается `restoreSidebarsIfAutoCollapsed()`.
 
 ---
 
